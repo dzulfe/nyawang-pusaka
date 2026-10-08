@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" content="#100c08" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Museum Galunggung — Web AR</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/museum-logo.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://maps.google.com" crossorigin />
+  <link rel="dns-prefetch" href="https://maps.gstatic.com" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="landing-body">
+
+  <!-- TOP NAVBAR -->
+  <header class="top-nav">
+    <div class="nav-logo">
+      <img src="assets/icons/museum-logo.svg" alt="Logo" width="32" height="32" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <span>NYAWANG</span>
+        <span>PUSAKA</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <section class="hero-section" id="beranda">
+    <div class="hero-bg">
+      <img src="assets/images/gambar-depan.png" alt="Hero" fetchpriority="high" decoding="async" onerror="this.src='assets/icons/photo-placeholder.svg'">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1>Warisan<br>Dari Masa Lalu</h1>
+      <h2>Melangkah ke Masa Depan</h2>
+      <p>Jelajahi jejak kejayaan Kerajaan Galunggung melalui koleksi peninggalan bersejarah yang menyimpan kisah, budaya, dan identitas bangsa.</p>
+      <div class="hero-actions">
+        <a href="petunjuk.html" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+          <span>Mulai Scan AR</span>
+        </a>
+        <a href="#koleksi-unggulan" class="btn btn-outline">Lihat Koleksi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. AR EXPERIENCE (Inti Skripsi) -->
+  <section class="section-container ar-section" id="ar-cta">
+    <div class="section-header centered">
+      <p class="eyebrow">AUGMENTED REALITY</p>
+      <h2 class="section-title">Jelajahi Museum via Web AR</h2>
+      <p class="section-desc">
+        Scan marker pada setiap koleksi peninggalan Kerajaan Galunggung menggunakan
+        kamera ponsel Anda — lihat objek 3D, dengar narasi, dan baca deskripsi
+        mendalam tanpa perlu install aplikasi.
+      </p>
+    </div>
+
+    <!-- 4 Fitur Utama -->
+    <div class="ar-features">
+      <div class="ar-feat">
+        <div class="ar-feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h4>Scan 3D</h4>
+        <p>Objek pusaka muncul sebagai model 3D realistis ketika kamera mendeteksi marker.</p>
+      </div>
+      <div class="ar-feat">
+        <div class="ar-feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </div>
+        <h4>Audio Narasi</h4>
+        <p>Dengarkan penjelasan langsung dari narator tentang filosofi dan sejarah setiap benda.</p>
+      </div>
+      <div class="ar-feat">
+        <div class="ar-feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h4>Deskripsi Lengkap</h4>
+        <p>Materi penelitian, pamor, asal usul, dan periode benda ditampilkan secara detail.</p>
+      </div>
+      <div class="ar-feat">
+        <div class="ar-feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Ga Perlu Install</h4>
+        <p>Hanya butuh browser modern — jalankan langsung tanpa instal aplikasi tambahan.</p>
+      </div>
+    </div>
+
+    <!-- Phone mockup + CTA -->
+    <div class="ar-cta-wrap">
+      <div class="ar-phone-mockup">
+        <div class="phone-frame">
+          <img src="assets/images/keris-1.jpg" alt="AR Preview" class="ar-preview-img" loading="lazy" decoding="async" onerror="this.src='assets/icons/photo-placeholder.svg'">
+          <div class="ar-scan-overlay">
+            <div class="scan-bracket">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="1.5"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+            </div>
+            <p>Arahkan kamera ke marker koleksi — model 3D &amp; narasi siap diputar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ar-cta-side">
+        <div class="ar-cta-box">
+          <h3>Cara Pakainya Gampang:</h3>
+          <ol class="ar-steps">
+            <li><span>1</span> Klik tombol di bawah ini untuk membuka pemindai AR.</li>
+            <li><span>2</span> Izinkan akses kamera, lalu arahkan ke marker di Museum.</li>
+            <li><span>3</span> Nikmati narasi audio &amp; informasi lengkapnya.</li>
+          </ol>
+          <a href="ar.html" class="btn btn-primary full">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+            <span>Buka Pemindai AR</span>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KOLEKSI UNGGULAN (Carousel) -->
+  <section class="section-container" id="koleksi-unggulan">
+    <div class="section-header">
+      <p class="eyebrow">KOLEKSI</p>
+      <div class="header-row">
+        <h2 class="section-title">Koleksi Unggulan</h2>
+        <a href="#ar-cta" class="link-all">Coba AR &rarr;</a>
+      </div>
+      <p class="section-desc">Peninggalan berharga lintas zaman — dari era Kerajaan Galunggung, Pemerintahan Sukakerta, transisi menjadi Kabupaten Tasikmalaya, hingga Peninggalan Kerajaan Mataram & Pajajaran yang menjadi saksi bisu perjalanan sejarah.</p>
+    </div>
+
+    <div class="carousel-wrapper">
+      <button class="nav-arrow left" id="btn-prev">&lsaquo;</button>
+      <div class="koleksi-carousel" id="koleksi-carousel">
+        <!-- Injected via JS -->
+      </div>
+      <button class="nav-arrow right" id="btn-next">&rsaquo;</button>
+    </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </section>
+
+  <!-- 4. LINIMASA SEJARAH (Vertical Timeline - Accordion) -->
+  <section class="section-container" id="timeline">
+    <div class="section-header">
+      <p class="eyebrow">LINIMASA</p>
+      <h2 class="section-title">Sejarah Kerajaan Galunggung</h2>
+      <p class="section-desc">Klik setiap periode untuk melihat sejarah lebih lengkap: dari Galunggung, Sukakerta, hingga menjadi Kabupaten Tasikmalaya.</p>
+    </div>
+
+    <div class="vertical-timeline" id="v-timeline">
+      <!-- [1] PRA KERAJAAN -->
+      <div class="v-timeline-item" data-period="pra">
+        <div class="v-timeline-dot"><div class="dot-inner"></div></div>
+        <div class="v-timeline-content">
+          <div class="v-timeline-head">
+            <div>
+              <h3>Pra Kerajaan</h3>
+              <p class="era">Sebelum abad ke-7</p>
+            </div>
+            <svg class="v-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="v-timeline-body">
+            <p class="desc">Wilayah Galunggung telah dikenal sebagai pusat permukiman dan kegiatan spiritual masyarakat Sunda sejak zaman prasejarah.</p>
+            <div class="v-expand">
+              <div class="v-expand-inner">
+                <h4>Latar Belakang</h4>
+                <p>Daerah di kaki Gunung Galunggung sejak lama menjadi tempat berkumpulnya para resi dan pertapa. Lahan yang subur di lereng gunung dan ketersediaan sumber mata air menjadikan wilayah ini tumbuh sebagai perkampungan permanen masyarakat Sunda awal.</p>
+                <h4>Bukti Arkeologis</h4>
+                <ul>
+                  <li>Temuan alat-alat batu di daerah Sariwangi dan sekitarnya</li>
+                  <li>Sisa-sisa pemukiman kuno di lereng barat Gunung Galunggung</li>
+                  <li>Peninggalan situs spiritual tempat para resi bertapa</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [2] KERAJAAN GALUNGGUNG -->
+      <div class="v-timeline-item" data-period="galunggung">
+        <div class="v-timeline-dot"></div>
+        <div class="v-timeline-content">
+          <div class="v-timeline-head">
+            <div>
+              <h3>Kerajaan Galunggung</h3>
+              <p class="era">Abad ke-7 – abad ke-13</p>
+            </div>
+            <svg class="v-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="v-timeline-body">
+            <p class="desc">Galunggung tumbuh sebagai pusat kewibawaan di Tatar Sunda, tempat melegitimasi para raja.</p>
+            <div class="v-expand">
+              <div class="v-expand-inner">
+                <h4>Awal Berdirinya Kerajaan</h4>
+                <p>Dimulai pada abad ke-7 sampai abad ke-12, diketahui adanya suatu bentuk Pemerintahan Kebataraan dengan pusat pemerintahannya di sekitar Galunggung. Batara atau sesepuh yang memerintah pada masa tersebut adalah sang batara Semplakwaja, Batara Kuncung Putih, Batara Kawindu, Batara Wastuhayu, dan Batari Hyang.</p>
+                <p>Pada masa pemerintahannya mengalami perubahan bentuk dari kebataraan menjadi kerajaan. Kerajaan ini bernama <strong>Kerajaan Galunggung</strong> yang berdiri pada tanggal <strong>13 Bhadrapada 1033 Saka, atau 21 Agustus 1111</strong> dengan penguasa pertamanya <strong>Batari Hyang</strong>.</p>
+                <h4>Raja-raja Galunggung</h4>
+                <p>Galunggung ini bertahan hingga <strong>6 raja</strong> yang masih keturunan Batari Hyang. Pada masanya, Galunggung bukan sekadar wilayah politik, melainkan pusat spiritual tempat dilaksanakannya upacara penetapan (melegitimasi) raja-raja Sunda sebelum memangku jabatan.</p>
+                <div class="v-quote">
+                  <p>"Galunggung sebagai <em>Pusat Kewibawaan</em> — tempat raja-raja Tatar Sunda menerima anugerah kekuasaan."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [3] PEMERINTAHAN SUKAKERTA -->
+      <div class="v-timeline-item" data-period="sukakerta">
+        <div class="v-timeline-dot"></div>
+        <div class="v-timeline-content">
+          <div class="v-timeline-head">
+            <div>
+              <h3>Pemerintahan Sukakerta</h3>
+              <p class="era">Abad ke-13 – abad ke-20</p>
+            </div>
+            <svg class="v-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="v-timeline-body">
+            <p class="desc">Setelah masa kerajaan, wilayah Galunggung bergabung ke dalam Pemerintahan Sukakerta sebagai cikal bakal Kabupaten Tasikmalaya.</p>
+            <div class="v-expand">
+              <div class="v-expand-inner">
+                <h4>Latar Belakang Sukakerta</h4>
+                <p>Terbentuknya Pemerintahan di Sukakerta berkaitan erat dengan kemunduran serta kehancuran Majapahit di Jawa Timur, karena disanalah cikal bakalnya Sukakerta.</p>
+                <h4>3 Periode Sukakerta</h4>
+                <div class="v-subperiod">
+                  <p class="v-sub-head">Periode 1 — Sukapura (1632 – 1628)</p>
+                  <p>Kabupaten Sukapura berdiri dan diresmikan pada <strong>26 Juli 1632</strong>, yang menjadi bupati pertamanya adalah <strong>Rd. Wirawangsa</strong>. Diangkatnya menjadi bupati dikarenakan beliau mampu meredam dan menghentikan Perang Dipati Ukur, dan setelah menjadi bupati nama beliau diganti menjadi <strong>Rd. Tumenggung Wiradadaha ke-I</strong>, yang mengandung arti Wira "prajurit/satria" dan Dadaha "penuh keberanian".</p>
+                </div>
+                <div class="v-subperiod">
+                  <p class="v-sub-head">Periode 2 — Sukakerta (1521 – 1535 &amp; 1829 – 1901)</p>
+                  <p>Sukakerta memiliki arti <strong>Suka ("Tiang") dan Pura ("Negara")</strong>. Dimulai pada tahun <strong>1521 – 1535</strong>, dibawah pimpinan <strong>Sri Gading Anteg</strong> yang beribukota di <strong>Dayeuh Tengah (Salopa)</strong>.</p>
+                  <p>Periode Sukakerta berlanjut pada tahun <strong>1813 – 1814</strong>, dibawah pimpinan <strong>Bupati Wirawangsa (Wiradadaha I)</strong>, dan ibukota dipindahkan ke <strong>Tasikmalaya</strong>.</p>
+                  <p>Sukakerta memiliki pusat pemerintahannya di Sukakerta tepatnya di Leuwi Loa (belakang Kecamatan Sukaraja sekarang).</p>
+                </div>
+                <div class="v-subperiod">
+                  <p class="v-sub-head">Periode 3 — Tasikmalaya (1901 – sekarang)</p>
+                  <p>Tahun 1909 nama Kabupaten Sukapura berubah menjadi <strong>Kabupaten Tasikmalaya</strong> dibawah pimpinan <strong>R.A.A. Wiatanuningrat (1908 – 1937)</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [4] KABUPATEN TASIKMALAYA -->
+      <div class="v-timeline-item" data-period="tasikmalaya">
+        <div class="v-timeline-dot"></div>
+        <div class="v-timeline-content">
+          <div class="v-timeline-head">
+            <div>
+              <h3>Kabupaten Tasikmalaya</h3>
+              <p class="era">Abad ke-19 – sekarang</p>
+            </div>
+            <svg class="v-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="v-timeline-body">
+            <p class="desc">Perkembangan nama dari Sukapura menjadi Kabupaten Tasikmalaya modern yang kita kenal hari ini.</p>
+            <div class="v-expand">
+              <div class="v-expand-inner">
+                <h4>Lahirnya Nama Tasikmalaya</h4>
+                <p><strong>Tahun 1820</strong> muncul nama distrik <strong>Tasikmalaija op Tjitjiariang (Tasikmalaya atau Cicariang)</strong>. Kemudian pada <strong>Tahun 1839</strong> menjadi distrik Tasikmalaija.</p>
+                <p>Perkembangan administrasi pemerintahan terus berlanjut hingga akhirnya <strong>Tahun 1909</strong>, nama Kabupaten Sukapura secara resmi berubah menjadi <strong>Kabupaten Tasikmalaya</strong>.</p>
+                <h4>Bupati Pertama Kabupaten Tasikmalaya</h4>
+                <div class="v-quote">
+                  <p>Raden Aria Aria Wiatanuningrat<br><span>Memerintah 1908 – 1937</span></p>
+                </div>
+                <p>Di bawah kepemimpinannya, struktur pemerintahan kabupaten mulai ditata secara modern, dan Museum Galunggung yang kita kenal kini mulai diinisiasi sebagai tempat pelestarian peninggalan sejarah.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [5] PENINGGALAN KINI -->
+      <div class="v-timeline-item" data-period="kini">
+        <div class="v-timeline-dot"></div>
+        <div class="v-timeline-content">
+          <div class="v-timeline-head">
+            <div>
+              <h3>Peninggalan Kini</h3>
+              <p class="era">Abad ke-20 – sekarang</p>
+            </div>
+            <svg class="v-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="v-timeline-body">
+            <p class="desc">Pusaka dan naskah kuno dirawat di Museum Galunggung untuk generasi mendatang.</p>
+            <div class="v-expand">
+              <div class="v-expand-inner">
+                <h4>Peran Museum Galunggung</h4>
+                <p>Pada masa kini, peninggalan sejarah Kerajaan Galunggung seperti keris, tombak, perhiasan, cupu perak, dan naskah-naskah kuno dirawat dengan baik di Museum Galunggung yang berada di Kecamatan Sariwangi, Kabupaten Tasikmalaya.</p>
+                <h4>Nilai Penting Pelestarian</h4>
+                <ul>
+                  <li>Menyimpan bukti fisik perjalanan peradaban Sunda kuno</li>
+                  <li>Mewariskan nilai-nilai kepemimpinan dan spiritualitas leluhur</li>
+                  <li>Menjadi sarana edukasi sejarah bagi generasi muda</li>
+                  <li>Mendukung pariwisata budaya di Kabupaten Tasikmalaya</li>
+                </ul>
+                <h4>Dibawa ke Masa Depan</h4>
+                <p>Melalui inovasi seperti <strong>Web Augmented Reality</strong> yang Anda kunjungi ini, koleksi peninggalan Galunggung dapat dijelajahi oleh siapa saja dari mana saja, membawa warisan 10 abad lalu ke dalam genggaman generasi masa kini.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TENTANG MUSEUM (Gabungan: Stats, Jam, Lokasi) -->
+  <section class="section-container" id="tentang">
+    <div class="section-header">
+      <p class="eyebrow">MUSEUM GALUNGGUNG</p>
+      <h2 class="section-title">Tentang Museum</h2>
+    </div>
+    
+    <p class="section-desc">
+      Museum Galunggung adalah pusat pelestarian benda bersejarah dari Kerajaan Galunggung, Pemerintahan Sukakerta, hingga periode awal Kabupaten Tasikmalaya. Berdiri di kaki Gunung Galunggung, museum ini bertujuan untuk menjaga warisan budaya leluhur, serta menjadi sarana edukasi dan riset bagi generasi mendatang.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="1.5"><path d="M4 19V5a2 2 0 0 1 2-2h13.4a.5.5 0 0 1 .49.79l-2.5 3.51a.5.5 0 0 0 0 .58l2.5 3.5a.5.5 0 0 1-.49.79H6"></path></svg>
+        <div>
+          <p class="stat-label">Koleksi</p>
+          <p class="stat-value">500+</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <div>
+          <p class="stat-label">Tahun Berdiri</p>
+          <p class="stat-value">2020</p>
+        </div>
+      </div>
+    </div>
+
+    <img src="assets/images/bangunan-museum.jpg" class="museum-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
+
+    <!-- Sub Section: Info Kunjungan (Gabung ke Tentang Museum) -->
+    <div class="sub-section-block" style="margin-top: 36px;">
+      <div class="section-header" style="margin-bottom: 14px;">
+        <p class="eyebrow" style="font-size: 9.5px;">INFO KUNJUNGAN</p>
+        <h2 class="section-title" style="font-size: clamp(19px, 5.2vw, 24px);">Jam Buka &amp; Lokasi</h2>
+      </div>
+
+      <div class="info-cards">
+        <!-- Jam Buka -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Jam Operasional</h3>
+          </div>
+          <ul class="schedule-list">
+            <li>
+              <span class="schedule-day">Senin — Jumat</span>
+              <span class="schedule-time">08.00 — 12.00 WIB <span class="tag">(Sampai Dzuhur)</span></span>
+            </li>
+            <li>
+              <span class="schedule-day">Sabtu — Minggu</span>
+              <span class="schedule-time">08.00 — 16.00 WIB <span class="tag weekend">Libur tetap buka</span></span>
+            </li>
+            <li class="closed">
+              <span class="schedule-day">Hari Besar Nasional</span>
+              <span class="schedule-time">Tutup</span>
+            </li>
+          </ul>
+          <p class="schedule-note">*Waktu kunjungan dapat berubah sewaktu-waktu. Disarankan datang 30 menit sebelum jam tutup.</p>
+        </div>
+
+        <!-- Lokasi -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Lokasi Museum</h3>
+          </div>
+          <p class="alamat">
+            Jl. Raya Sariwangi – Gunung Galunggung No. 12,<br>
+            Kec. Sariwangi, Kab. Tasikmalaya, Jawa Barat 46468
+          </p>
+
+          <div class="map-wrap">
+            <iframe
+              title="Peta Museum Galunggung"
+              class="museum-map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2056.530707898102!2d108.0663238!3d-7.3028923!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f53f1cb7bca85%3A0x41ee60a8787d71e1!2sMUSEUM%20GALUNGGUNG!5e0!3m2!1sid!2sid!4v1727610000000!5m2!1sid!2sid">
+            </iframe>
+            <a
+              href="https://www.google.com/maps/place/MUSEUM+GALUNGGUNG/@-7.3028923,108.0663238,514m/data=!3m1!1e3!4m6!3m5!1s0x2e6f53f1cb7bca85:0x41ee60a8787d71e1!8m2!3d-7.3032026!4d108.0659628!16s%2Fg%2F11llgy29l7?entry=ttu"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="map-cta btn btn-outline small"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6m4 0h2a2 2 0 0 1 2 2v3m-6-5 7 7"/><path d="M12 22v-7m0 7 4-4m-4 4-4-4"/></svg>
+              <span>Buka di Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PENUTUP -->
+  <section class="section-container closing-section" id="penutup">
+    <div class="footer-quote">
+      <p class="quote-text">"Bukan sekadar benda,<br>tapi cerita yang tak pernah<br>benar-benar usai."</p>
+    </div>
+    <div style="height: 24px;"></div>
+    <div class="closing-cta">
+      <p>Mau lihat langsung koleksi 3D-nya?</p>
+      <a href="ar.html" class="btn btn-outline small">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+        <span>Buka AR Sekali Lagi</span>
+      </a>
+    </div>
+    <div style="height: 40px;"></div>
+
+    <!-- CREDIT SECTION -->
+    <div class="credit-footer" role="contentinfo">
+      <div class="credit-divider" aria-hidden="true"></div>
+      <div class="credit-inner">
+        <p class="credit-label">Kredit Teknis &amp; Sumber Daya</p>
+
+        <div class="credit-attributions">
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">Tipografi</p>
+            <p class="credit-attrib-value">
+              <strong>Fraunces</strong> (heading) &middot;
+              <strong>Plus Jakarta Sans</strong> (body)
+              <span class="credit-attrib-src">oleh Google Fonts</span>
+            </p>
+          </div>
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">Ikonografi</p>
+            <p class="credit-attrib-value">
+              <strong>Lucide Icons</strong>, <strong>Feather Icons</strong>,
+              dan ikon ilustrasi custom
+              <span class="credit-attrib-src">via open source &amp; desain mandiri</span>
+            </p>
+          </div>
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">Mesin Web AR</p>
+            <p class="credit-attrib-value">
+              <strong>MindAR</strong> v1.2.5
+              <span class="credit-attrib-src">Image Tracking Engine</span>
+            </p>
+          </div>
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">3D Scene Framework</p>
+            <p class="credit-attrib-value">
+              <strong>A-Frame</strong> v1.4.2
+              <span class="credit-attrib-src">WebXR oleh Mozilla</span>
+            </p>
+          </div>
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">Model 3D</p>
+            <p class="credit-attrib-value">
+              Format <strong>.glb</strong> / glTF 2.0
+              <span class="credit-attrib-src">diproses melalui Blender</span>
+            </p>
+          </div>
+          <div class="credit-attrib-item">
+            <p class="credit-attrib-label">Konten Sejarah</p>
+            <p class="credit-attrib-value">
+              Dokumen internal &amp; buletin Museum Galunggung
+              <span class="credit-attrib-src">Sariwangi, Kab. Tasikmalaya</span>
+            </p>
+          </div>
+        </div>
+
+        <p class="credit-meta">
+          Museum Galunggung | Ilham Febrian Dzulkifli &copy; <span id="credit-year">2026</span>
+          &middot; Seluruh hak cipta dilindungi undang-undang.
+        </p>
+      </div>
+    </div>
+
+    <div style="height: calc(80px + env(safe-area-inset-bottom));"></div> <!-- Spacing for bottom nav -->
+  </section>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+    <a href="#beranda" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Beranda</span>
+    </a>
+    <a href="#koleksi-unggulan" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Koleksi</span>
+    </a>
+    <a href="#timeline" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>Linimasa</span>
+    </a>
+    <a href="ar.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+      <span>AR</span>
+    </a>
+  </nav>
+
+  <script src="js/pusaka-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- Render Koleksi Unggulan Carousel ---
+      const carouselWrap = document.getElementById("koleksi-carousel");
+      const carouselDots = document.getElementById("carousel-dots");
+      
+      if (carouselWrap && typeof PUSAKA_DATA !== "undefined") {
+        const highlights = PUSAKA_DATA.filter(x => !x.flag || x.flag !== "ar");
+        const AUTOPLAY_MS = 4000;
+        let autoplayTimer = null;
+        let isUserInteracting = false;
+        let activeIdx = 0;
+
+        function scrollToIndex(idx, smooth = true) {
+          if (highlights.length === 0) return;
+          if (idx < 0) idx = highlights.length - 1;
+          if (idx >= highlights.length) idx = 0;
+          const firstCard = carouselWrap.querySelector(".unggulan-card");
+          if (!firstCard) return;
+          const cardWidth = firstCard.offsetWidth;
+          const gap = 16;
+          carouselWrap.scrollTo({
+            left: (cardWidth + gap) * idx,
+            behavior: smooth ? "smooth" : "auto"
+          });
+          activeIdx = idx;
+          syncDots(idx);
+        }
+
+        function syncDots(idx) {
+          if (!carouselDots) return;
+          const dots = carouselDots.querySelectorAll(".carousel-dot");
+          dots.forEach((dot, i) => dot.classList.toggle("active", i === idx));
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayTimer = setInterval(() => {
+            if (isUserInteracting) return;
+            scrollToIndex((activeIdx + 1) % highlights.length, true);
+          }, AUTOPLAY_MS);
+        }
+
+        function scheduleResumeAutoplay(delay = AUTOPLAY_MS) {
+          stopAutoplay();
+          if (!isUserInteracting) {
+            autoplayTimer = setTimeout(() => startAutoplay(), delay);
+          }
+        }
+
+        const imgWithFallback = (src, alt, cls) => {
+          const placeholder = "assets/icons/photo-placeholder.svg";
+          return `
+            <img src="${src}" alt="${alt}" class="${cls}"
+              loading="lazy" decoding="async"
+              width="480" height="600"
+              onerror="this.onerror=null; if(this.src!=='${placeholder}'){this.src='${placeholder}'; this.classList.add('is-placeholder');}">`;
+        };
+
+        highlights.forEach((item, idx) => {
+          const card = document.createElement("div");
+          card.className = "unggulan-card";
+          card.innerHTML = `
+            <div class="img-simple-wrap">
+              ${imgWithFallback(item.thumb, item.nama, "unggulan-img")}
+            </div>
+            <div class="unggulan-info">
+              <h3>${item.nama}</h3>
+              <p class="era">${item.era}</p>
+            </div>
+          `;
+          carouselWrap.appendChild(card);
+
+          const imgEl = card.querySelector(".unggulan-img");
+          if (imgEl) {
+            const reveal = () => {
+              imgEl.classList.add("img-loaded");
+              imgEl.style.opacity = "1";
+              imgEl.style.visibility = "visible";
+            };
+            if (imgEl.complete && imgEl.naturalWidth > 0) {
+              reveal();
+            } else {
+              imgEl.addEventListener("load", reveal, { once: true });
+              imgEl.addEventListener("decoded", reveal, { once: true });
+              imgEl.addEventListener("error", reveal, { once: true });
+              setTimeout(reveal, 5000);
+            }
+          }
+
+          const dot = document.createElement("button");
+          dot.className = "carousel-dot";
+          if (idx === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => {
+            scrollToIndex(idx, true);
+            stopAutoplay();
+            setTimeout(() => startAutoplay(), 2000);
+          });
+          if(carouselDots) carouselDots.appendChild(dot);
+        });
+
+        window.addEventListener("load", () => {
+          const allImgs = carouselWrap.querySelectorAll(".unggulan-img");
+          allImgs.forEach((img) => {
+            img.classList.add("img-loaded");
+            img.style.opacity = "1";
+            img.style.visibility = "visible";
+          });
+        }, { once: true });
+
+        let scrollRaf = null;
+        carouselWrap.addEventListener("scroll", () => {
+          if (scrollRaf) return;
+          scrollRaf = requestAnimationFrame(() => {
+            scrollRaf = null;
+            const cards = carouselWrap.querySelectorAll(".unggulan-card");
+            const scrollLeft = carouselWrap.scrollLeft;
+            let currentIdx = activeIdx;
+            let minDiff = Infinity;
+            cards.forEach((card, idx) => {
+              const diff = Math.abs(card.offsetLeft - scrollLeft - carouselWrap.offsetLeft);
+              if (diff < minDiff) {
+                minDiff = diff;
+                currentIdx = idx;
+              }
+            });
+            if (currentIdx !== activeIdx) {
+              activeIdx = currentIdx;
+              syncDots(currentIdx);
+            }
+          });
+        });
+
+        const pauseEvents = ["touchstart", "mousedown", "pointerdown", "mouseenter"];
+        pauseEvents.forEach(evt => carouselWrap.addEventListener(evt, () => {
+          isUserInteracting = true;
+          stopAutoplay();
+        }, { passive: true }));
+
+        const resumeEvents = ["touchend", "touchcancel", "mouseup", "pointerup", "mouseleave"];
+        resumeEvents.forEach(evt => carouselWrap.addEventListener(evt, () => {
+          isUserInteracting = false;
+          scheduleResumeAutoplay(AUTOPLAY_MS);
+        }, { passive: true }));
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            stopAutoplay();
+          } else if (!isUserInteracting) {
+            startAutoplay();
+          }
+        });
+
+        const btnPrev = document.getElementById("btn-prev");
+        const btnNext = document.getElementById("btn-next");
+        if(btnPrev && btnNext) {
+          btnPrev.addEventListener("click", () => {
+            scrollToIndex(activeIdx - 1, true);
+            scheduleResumeAutoplay(AUTOPLAY_MS);
+          });
+          btnNext.addEventListener("click", () => {
+            scrollToIndex(activeIdx + 1, true);
+            scheduleResumeAutoplay(AUTOPLAY_MS);
+          });
+        }
+
+        window.requestAnimationFrame(() => {
+          scrollToIndex(0, false);
+          startAutoplay();
+        });
+      }
+
+      // --- Render Galeri Grid (section #galeri sudah di-remove, kode ini aman skip) ---
+      const galeriGrid = document.getElementById("galeri-grid");
+      if (galeriGrid && typeof PUSAKA_DATA !== "undefined") {
+        // (opsional: jika nanti section galeri diaktifkan kembali)
+      }
+
+      // --- Anatomi 5 Pusaka (Tabs + Hotspots dinamis) ---
+      const ANATOMI_DATA = {
+        keris: {
+          image: "assets/images/keris-1.jpg",
+          hotspots: [
+            { top: "10%",  left: "52%", title: "Wilah (Ujung Bilah)",       desc: "Bagian paling tajam, lambang ketegasan dalam mengambil keputusan." },
+            { top: "30%",  left: "48%", title: "Pamor (Corak Besi)",         desc: "Perpaduan nikel meteorit dan besi Tosan Aji sebagai pembawa energi pusaka." },
+            { top: "55%",  left: "50%", title: "Ganja",                       desc: "Penebal bilah di area hilts, melambangkan fondasi iman yang kokoh." },
+            { top: "68%",  left: "52%", title: "Pesi (Tangkai)",              desc: "Bagian yang masuk ke dalam gagang, lambang akar pohon kehidupan." },
+            { top: "86%",  left: "50%", title: "Hulu / Gagang Kayu Galih Asem", desc: "Grip dari kayu inti wangi yang tidak lapuk dimakan zaman." },
+          ]
+        },
+        tombak: {
+          image: "assets/images/tombak-1.jpg",
+          hotspots: [
+            { top: "6%",  left: "52%", title: "Cunduk (Ujung Mata)",     desc: "Puncak paling runcing tombak kebesaran, lambang keberanian prajurit." },
+            { top: "18%", left: "46%", title: "Selut (Pengait Gagang)",   desc: "Lekukan di pangkal mata tombak agar bilah tidak lepas dari gagang." },
+            { top: "32%", left: "50%", title: "Corak Ukir Tangguh",       desc: "Ornamen di pangkal mata yang biasanya menyimpan mantra keamanan." },
+            { top: "58%", left: "54%", title: "Gagang Kembang Semangkok", desc: "Gagang kayu pilihan yang tahan cuaca dan tidak mudah patah." },
+            { top: "90%", left: "48%", title: "Tacar (Pendolan)",         desc: "Tutup ujung gagang dari logam, lambang penutup doa agar tombak selalu beruntung." },
+          ]
+        },
+        gelang: {
+          image: "assets/images/perhiasan-gelang-1.jpg",
+          hotspots: [
+            { top: "16%", left: "35%", title: "Puseur Jagat",        desc: "Pola pusar dunia di bagian atas, simbol kosmik kesuburan alam." },
+            { top: "18%", left: "64%", title: "Aksara Sunda Kuno",   desc: "Ukitan mantra perlindungan keluarga, hanya bisa dibaca oleh sesepuh." },
+            { top: "50%", left: "20%", title: "Sendi Buka Gelang",   desc: "Engsel tersembunyi yang hanya bisa dibuka dengan paku kecil khusus." },
+            { top: "54%", left: "78%", title: "Lubang Pengunci",     desc: "Kaitan pengaman agar gelang tidak jatuh saat bergerak lincah." },
+            { top: "80%", left: "50%", title: "Lebar Emasan 22 Karat", desc: "Lapisan emas 22k bercampur tembaga supaya lentur tapi tidak lekas patah." },
+          ]
+        },
+        anting: {
+          image: "assets/images/perhiasan-anting-1.jpg",
+          hotspots: [
+            { top: "8%",  left: "50%", title: "Cangkuk Anting",       desc: "Peniti penahan agar anting tidak terlepas dari cuping telinga." },
+            { top: "22%", left: "48%", title: "Rangka Hias Bunga",    desc: "Susunan bunga melati sebagai simbol kesucian putri keraton." },
+            { top: "46%", left: "52%", title: "Liontin Taji Ayam",    desc: "Ornamen taji ayam khas Galunggung yang melambangkan keberanian." },
+            { top: "70%", left: "46%", title: "Lapisan Emas Sepuh",   desc: "Perak dasar yang dilapis emas dengan madu dan daun jati agar awet." },
+            { top: "90%", left: "54%", title: "Piala Ujung",          desc: "Bola kecil penyeimbang di ujung agar anting tidak berayun berlebih." },
+          ]
+        },
+        cupu: {
+          image: "assets/images/cupu-perak.jpg",
+          hotspots: [
+            { top: "12%", left: "50%", title: "Kuncup Kencana",        desc: "Tutup cupu berbentuk kuncup bunga teratai, simbol harapan baru." },
+            { top: "26%", left: "46%", title: "Ukiran Pohon Hayat",    desc: "Diapit dua burung hong yang melambangkan keabadian persaudaraan." },
+            { top: "50%", left: "22%", title: "Badan Cupu",            desc: "Tempat utama sirih pinang persembahan untuk tamu agung." },
+            { top: "54%", left: "78%", title: "Sisa Noda Temen",       desc: "Bekas noda sirih peninggalan asli, bukti barang ini sungguh pernah dipakai." },
+            { top: "90%", left: "52%", title: "Kaki Tiga Kaki Cupu",   desc: "Kaki penyangga agar cupu tidak bergoyang ketika diletakkan di atas bantal." },
+          ]
+        }
+      };
+
+      const anatomiTabs = document.getElementById("anatomi-tabs");
+      const anatomiImg = document.getElementById("anatomi-image");
+      const anatomiLayer = document.getElementById("anatomi-hotspots-layer");
+
+      function renderAnatomi(tabKey) {
+        const data = ANATOMI_DATA[tabKey];
+        if (!data) return;
+
+        if (anatomiImg) {
+          anatomiImg.src = data.image;
+          anatomiImg.alt = `Anatomi ${tabKey}`;
+          anatomiImg.onerror = function() { this.src = 'assets/icons/photo-placeholder.svg'; };
+        }
+
+        if (anatomiLayer) {
+          anatomiLayer.innerHTML = "";
+          data.hotspots.forEach((hs) => {
+            const point = document.createElement("div");
+            point.className = "hotspot-point";
+            point.style.top = hs.top;
+            point.style.left = hs.left;
+            point.innerHTML = `
+              <div class="hotspot-marker">
+                <div class="hotspot-pulse"></div>
+                <span>+</span>
+              </div>
+              <div class="hotspot-tooltip">
+                <h4>${hs.title}</h4>
+                <p>${hs.desc}</p>
+              </div>
+            `;
+            // Toggle mobile
+            point.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const isActive = point.classList.contains("active");
+              const allPoints = anatomiLayer.querySelectorAll(".hotspot-point");
+              allPoints.forEach(p => p.classList.remove("active"));
+              if (!isActive) point.classList.add("active");
+            });
+            anatomiLayer.appendChild(point);
+          });
+        }
+      }
+
+      if (anatomiTabs) {
+        anatomiTabs.addEventListener("click", (e) => {
+          const btn = e.target.closest(".anatomi-tab");
+          if (!btn) return;
+          const tabKey = btn.getAttribute("data-tab");
+          if (!tabKey) return;
+          anatomiTabs.querySelectorAll(".anatomi-tab").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderAnatomi(tabKey);
+        });
+        // Init default (tab "keris")
+        renderAnatomi("keris");
+      }
+
+      // --- Timeline Active State + Accordion Expand Toggle ---
+      const timelineItems = document.querySelectorAll(".v-timeline-item");
+      timelineItems.forEach((item, index) => {
+        const dot = item.querySelector(".v-timeline-dot");
+        const expandEl = item.querySelector(".v-expand");
+
+        if (index === 0) {
+          item.classList.add("active");
+          if (dot && !dot.querySelector(".dot-inner")) {
+            dot.innerHTML = '<div class="dot-inner"></div>';
+          }
+        }
+
+        function closeAllExcept(keepIdx) {
+          timelineItems.forEach((it, i) => {
+            if (i === keepIdx) return;
+            it.classList.remove("active");
+            const d = it.querySelector(".v-timeline-dot");
+            if (d) d.innerHTML = '';
+            const ex = it.querySelector(".v-expand");
+            if (ex) {
+              ex.style.maxHeight = "0px";
+              ex.style.opacity = "0";
+              ex.style.marginTop = "0px";
+            }
+          });
+        }
+
+        function toggleItem(openIt = true) {
+          const isOpen = item.classList.contains("expanded");
+          if (!openIt || isOpen) {
+            item.classList.remove("expanded");
+            if (expandEl) {
+              expandEl.style.maxHeight = "0px";
+              expandEl.style.opacity = "0";
+              expandEl.style.marginTop = "0px";
+            }
+          } else {
+            item.classList.add("expanded");
+            if (expandEl) {
+              const inner = expandEl.querySelector(".v-expand-inner");
+              const targetH = inner ? inner.scrollHeight + 20 : 2000;
+              expandEl.style.maxHeight = targetH + "px";
+              expandEl.style.opacity = "1";
+              expandEl.style.marginTop = "12px";
+            }
+          }
+        }
+
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const alreadyActive = item.classList.contains("active");
+          const alreadyExpanded = item.classList.contains("expanded");
+          closeAllExcept(index);
+          item.classList.add("active");
+          if (dot) dot.innerHTML = '<div class="dot-inner"></div>';
+          if (alreadyActive && alreadyExpanded) {
+            toggleItem(false);
+          } else {
+            toggleItem(true);
+          }
+        });
+      });
+
+      // --- Hotspots Mobile Toggle ---
+      const hotspots = document.querySelectorAll(".hotspot-point");
+      hotspots.forEach(point => {
+        point.addEventListener("click", () => {
+          const isActive = point.classList.contains("active");
+          hotspots.forEach(p => p.classList.remove("active"));
+          if (!isActive) point.classList.add("active");
+        });
+      });
+
+      // --- Bottom Nav Active State (rAF-throttled, passive) ---
+      const navItems = document.querySelectorAll(".bottom-nav .nav-item");
+      const sections = document.querySelectorAll("section[id]");
+      let navScrollTicking = false;
+
+      function updateNavActive() {
+        let current = "";
+        const y = window.scrollY || window.pageYOffset;
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (y >= sectionTop - 160) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove("active");
+          const href = item.getAttribute("href");
+          if (href && href.startsWith("#")) {
+            const target = href.substring(1);
+            if (target === current) item.classList.add("active");
+          }
+        });
+
+        if (current === 'koleksi-unggulan' || current === 'anatomi') {
+           if (navItems[1]) navItems[1].classList.add("active");
+        }
+
+        navScrollTicking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!navScrollTicking) {
+          window.requestAnimationFrame(updateNavActive);
+          navScrollTicking = true;
+        }
+      }, { passive: true });
+
+      const creditYearEl = document.getElementById("credit-year");
+      if (creditYearEl) {
+        const y = new Date().getFullYear();
+        creditYearEl.textContent = y > 2026 ? `2026 – ${y}` : "2026";
+      }
+
+      updateNavActive();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Test Gesture Layer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    .container {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .gesture-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 100;
+      background: rgba(255, 0, 0, 0.1);
+      touch-action: none;
+      cursor: grab;
+    }
+    .gesture-layer:active {
+      cursor: grabbing;
+      background: rgba(0, 255, 0, 0.1);
+    }
+    .info {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .output {
+      margin-top: 5px;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="info">
+      <div>Touch/Swipe this area</div>
+      <div class="output" id="output">Waiting for input...</div>
+    </div>
+    <div class="gesture-layer" id="gesture-layer"></div>
+  </div>
+
+  <script>
+    const layer = document.getElementById('gesture-layer');
+    const output = document.getElementById('output');
+
+    layer.addEventListener('touchstart', (e) => {
+      output.textContent = `Touch start: ${e.touches.length} finger(s)`;
+      e.preventDefault();
+    }, { passive: false });
+
+    layer.addEventListener('touchmove', (e) => {
+      output.textContent = `Touch move: ${e.touches.length} finger(s)`;
+      e.preventDefault();
+    }, { passive: false });
+
+    layer.addEventListener('touchend', (e) => {
+      output.textContent = `Touch end: ${e.touches.length} finger(s) remaining`;
+    });
+
+    layer.addEventListener('mousedown', (e) => {
+      output.textContent = `Mouse down at (${e.clientX}, ${e.clientY})`;
+    });
+
+    layer.addEventListener('mousemove', (e) => {
+      output.textContent = `Mouse move at (${e.clientX}, ${e.clientY})`;
+    });
+
+    layer.addEventListener('mouseup', (e) => {
+      output.textContent = `Mouse up at (${e.clientX}, ${e.clientY})`;
+    });
+  </script>
+</body>
+</html>

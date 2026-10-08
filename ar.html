@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Nyawang Pusaka — AR</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+
+  <div class="ar-wrapper" id="ar-wrapper">
+
+    <!-- Topbar -->
+    <div class="ar-topbar">
+      <a href="index.html" class="ar-icon-btn" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6M9 12h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span>Kembali</span>
+      </a>
+      <button class="ar-icon-btn" id="topbar-audio-btn" aria-label="Audio" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path id="audio-wave" d="M16 9a5 5 0 0 1 0 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <span>Audio</span>
+      </button>
+    </div>
+
+
+
+    <!-- Scan frame guide -->
+    <div class="ar-frame-guide" id="ar-frame-guide">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+
+    <!-- Touch overlay: canvas MindAR sering tidak menerima gesture HP -->
+    <div class="ar-gesture-layer" id="ar-gesture-layer" aria-hidden="true"></div>
+
+    <p class="ar-gesture-hint" id="ar-gesture-hint">
+      Geser kiri/kanan: putar · Atas/bawah: geser · Cubit: zoom · Ketuk 2x: reset
+    </p>
+
+    <a-scene
+      id="ar-scene"
+      mindar-image="imageTargetSrc: assets/markers/target.mind; autoStart: true; uiScanning: no; uiLoading: no; maxTrack: 1;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights; antialias: true; alpha: true;"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+      embedded
+      loading-screen="enabled: false"
+      inspector="false"
+      class="embedded-scene"
+    >
+      <a-assets timeout="120000">
+        <a-asset-item id="model-keris-1" src="assets/models/keris-1-fixed.glb" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="model-keris-2" src="assets/models/keris-2-fixed.glb" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="model-keris-3" src="assets/models/keris-3-fixed.glb" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="model-tombak-1" src="assets/models/tombak-1-fixed.glb" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="model-tombak-2" src="assets/models/tombak-2-fixed.glb" response-type="arraybuffer"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false" fov="60"></a-camera>
+
+      <a-entity light="type: ambient; color: #ffffff; intensity: 1.1;"></a-entity>
+      <a-entity light="type: directional; color: #ffffff; intensity: 0.8" position="3 6 4"></a-entity>
+      <a-entity light="type: hemisphere; color: #ffe9c8; groundColor: #403018; intensity: 0.6;"></a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 0" data-target-index="0">
+        <a-gltf-model
+          src="#model-keris-1"
+          scale="6 6 6"
+          position="0 0 0.1"
+          rotation="0 0 0"
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 1" data-target-index="1">
+        <a-gltf-model
+          src="#model-keris-2"
+          scale="6 6 6"
+          position="0 0 0.1"
+          rotation="0 0 0"
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 2" data-target-index="2">
+        <a-gltf-model
+          src="#model-keris-3"
+          scale="6 6 6"
+          position="0 0 0.1"
+          rotation="0 0 0"
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 3" data-target-index="3">
+        <a-gltf-model
+          src="#model-tombak-1"
+          scale="6 6 6"
+          position="0 0 0.1"
+          rotation="0 0 0"
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 4" data-target-index="4">
+        <a-gltf-model
+          src="#model-tombak-2"
+          scale="6 6 6"
+          position="0 0 0.1"
+          rotation="0 0 0"
+        ></a-gltf-model>
+      </a-entity>
+    </a-scene>
+
+    <div class="info-panel" id="info-panel">
+      <p class="cat">Kategori</p>
+      <h2>Nama Pusaka</h2>
+      <p class="desc-short" id="desc-short">Deskripsi singkat.</p>
+      <button class="detail-btn" id="detail-btn">
+        <span>Info Selengkapnya</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="detail-backdrop" id="detail-backdrop" aria-hidden="true">
+      <div class="detail-card" id="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-nama">
+        <div class="detail-drag-handle" aria-hidden="true"></div>
+        <button class="detail-close" id="detail-close-btn" aria-label="Tutup detail">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+        <div class="detail-content">
+          <p class="cat" id="detail-cat">Kategori</p>
+          <h2 id="detail-nama">Nama Pusaka</h2>
+          <p class="era" id="detail-era">Era</p>
+
+          <div class="detail-thumb">
+            <img
+              id="detail-thumb-img"
+              src=""
+              alt=""
+              onerror="this.onerror=null; this.src='assets/icons/photo-placeholder.svg'; this.classList.add('is-placeholder');"
+            />
+          </div>
+
+          <div class="detail-section">
+            <h3>Informasi Pusaka</h3>
+            <p id="detail-desc">Deskripsi lengkap.</p>
+          </div>
+
+          <button class="audio-btn" id="audio-btn">
+            <span id="audio-btn-label">Putar Narasi</span>
+          </button>
+
+          <div class="ar-audio-player in-detail" id="audio-player" hidden>
+            <div class="audio-meta-row">
+              <span id="audio-current">0:00</span>
+              <span id="audio-duration">0:00</span>
+            </div>
+            <input
+              class="audio-seek"
+              id="audio-seek"
+              type="range"
+              min="0"
+              max="1000"
+              value="0"
+              step="1"
+              aria-label="Posisi narasi"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio id="panel-audio" preload="metadata"></audio>
+
+  </div>
+
+  <script src="js/pusaka-data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
