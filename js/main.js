@@ -3,6 +3,7 @@
   const panel = document.getElementById("info-panel");
   const audioEl = document.getElementById("panel-audio");
   const frameGuide = document.getElementById("ar-frame-guide");
+  const scanStatus = document.getElementById("ar-scan-status");
 
   const detailBtn = document.getElementById("detail-btn");
   const detailBackdrop = document.getElementById("detail-backdrop");
@@ -10,7 +11,9 @@
   const detailCloseBtn = document.getElementById("detail-close-btn");
 
   const topbarAudioBtn = document.getElementById("topbar-audio-btn");
+  const resetModelBtn = document.getElementById("reset-model-btn");
   const audioBtn = document.getElementById("audio-btn");
+  const audioBtnIcon = document.getElementById("audio-btn-icon");
   const audioBtnLabel = document.getElementById("audio-btn-label");
   const audioPlayer = document.getElementById("audio-player");
   const audioSeek = document.getElementById("audio-seek");
@@ -20,6 +23,8 @@
   let currentAudioSrc = null;
   let currentData = null;
   let isArReady = false;
+  let isArFailed = false;
+  let scanStatusTimer = null;
 
   // Gesture state (1 jari: putar Y / geser Y; 2 jari: pinch zoom)
   const originalTransforms = new WeakMap();
@@ -35,6 +40,7 @@
   let userZoom = 1;
   let userPanY = 0;
   let hintTimer = null;
+  let transformFrame = null;
 
   const MIN_ZOOM = 0.35;
   const MAX_ZOOM = 3.6;
@@ -43,12 +49,23 @@
   const PAN_PER_PX = 0.0028;
   const AXIS_LOCK_PX = 14;
 
-  function setHint(text, isError) {
-    // Hint removed - do nothing
-  }
-
-  function hideHint() {
-    // Hint removed - do nothing
+  function setHint(text, isError, autoHideMs) {
+    if (!scanStatus) return;
+    if (scanStatusTimer) {
+      clearTimeout(scanStatusTimer);
+      scanStatusTimer = null;
+    }
+    scanStatus.textContent = text;
+    scanStatus.classList.remove("hidden");
+    scanStatus.classList.toggle("error", Boolean(isError));
+    scanStatus.classList.toggle("loading", !isError && /menyiapkan|memuat|menghubungkan/i.test(text));
+    scanStatus.classList.toggle("found", !isError && /terdeteksi|terkunci/i.test(text));
+    if (!isError && autoHideMs) {
+      scanStatusTimer = setTimeout(() => {
+        scanStatus.classList.add("hidden");
+        scanStatusTimer = null;
+      }, autoHideMs);
+    }
   }
 
   function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
@@ -100,6 +117,14 @@
     syncVecComponent(currentModelEl, "position", basePosX, py, basePosZ);
   }
 
+  function scheduleTransform() {
+    if (transformFrame !== null) return;
+    transformFrame = requestAnimationFrame(() => {
+      transformFrame = null;
+      applyTransform();
+    });
+  }
+
   function syncVecComponent(el, name, x, y, z) {
     const comp = el.components && el.components[name];
     if (comp && comp.data) {
@@ -114,6 +139,14 @@
     userZoom = 1;
     userPanY = 0;
     applyTransform();
+  }
+
+  if (resetModelBtn) {
+    resetModelBtn.addEventListener("click", () => {
+      if (!currentModelEl) return;
+      resetUserTransform();
+      showGestureHint();
+    });
   }
 
   function showGestureHint() {
@@ -141,9 +174,11 @@
 
     if (!modelEl) {
       hideGestureHint();
+      if (resetModelBtn) resetModelBtn.disabled = true;
       return;
     }
 
+    if (resetModelBtn) resetModelBtn.disabled = false;
     const orig = captureOriginal(modelEl);
     baseScale = orig.scale;
     baseRotX = orig.rot.x;
@@ -160,6 +195,10 @@
   function setAudioButtonState(isPlaying) {
     if (topbarAudioBtn) topbarAudioBtn.classList.toggle("playing", isPlaying);
     if (audioBtn) audioBtn.classList.toggle("playing", isPlaying);
+    if (audioBtnIcon) {
+      audioBtnIcon.classList.toggle("ui-icon-play", !isPlaying);
+      audioBtnIcon.classList.toggle("ui-icon-pause", isPlaying);
+    }
     if (audioBtnLabel) {
       audioBtnLabel.textContent = isPlaying ? "Jeda Narasi" : "Putar Narasi";
     }
@@ -191,12 +230,13 @@ function setPanelVisible(show) {
   if (show) {
     panel.classList.add("visible");
     panel.style.display = "block";
-    panel.style.transform = "translateY(0)";
+    panel.style.removeProperty("transform");
     panel.style.opacity = "1";
     panel.style.visibility = "visible";
   } else {
     panel.classList.remove("visible");
     panel.style.display = "none";
+    panel.style.removeProperty("transform");
     panel.style.opacity = "0";
     panel.style.visibility = "hidden";
   }
@@ -239,13 +279,17 @@ setPanelVisible(true);
 
   function hidePanel() {
     setPanelVisible(false);
-    if (detailBackdrop) detailBackdrop.classList.remove("visible");
+    if (detailBackdrop) {
+      detailBackdrop.classList.remove("visible");
+      detailBackdrop.setAttribute("aria-hidden", "true");
+    }
     audioEl.pause();
     setAudioButtonState(false);
     currentData = null;
     setActiveModel(null);
     if (topbarAudioBtn) topbarAudioBtn.disabled = true;
     if (frameGuide) frameGuide.classList.remove("locked");
+    setHint("Arahkan kamera ke marker koleksi.", false, 2800);
   }
 
 function lockGestureLayer(lock) {
@@ -268,16 +312,37 @@ function pauseAR(pause) {
     const namaEl = document.getElementById("detail-nama");
     const eraEl = document.getElementById("detail-era");
     const descEl = document.getElementById("detail-desc");
+    const descHeadingEl = document.getElementById("detail-section-heading");
     const thumbImg = document.getElementById("detail-thumb-img");
 
     if (catEl) catEl.textContent = currentData.kategori;
     if (namaEl) namaEl.textContent = currentData.nama;
     if (eraEl) eraEl.textContent = currentData.era;
-    if (descEl) {
+    if (descEl && Array.isArray(currentData.bagianInformasi) && currentData.bagianInformasi.length) {
+      descEl.replaceChildren();
+      if (descHeadingEl) descHeadingEl.hidden = true;
+      currentData.bagianInformasi.forEach((bagian) => {
+        const section = document.createElement("section");
+        section.className = "detail-copy-section";
+
+        const heading = document.createElement("h4");
+        heading.textContent = bagian.judul;
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = bagian.isi;
+
+        section.append(heading, paragraph);
+        descEl.appendChild(section);
+      });
+    } else if (descEl) {
       const text = currentData.deskripsiLengkap && currentData.deskripsiLengkap.trim()
         ? currentData.deskripsiLengkap
         : currentData.deskripsi;
-      descEl.textContent = text;
+      descEl.replaceChildren();
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      descEl.appendChild(paragraph);
+      if (descHeadingEl) descHeadingEl.hidden = false;
     }
 
     if (thumbImg) {
@@ -444,6 +509,7 @@ function pauseAR(pause) {
       if (!targetEl.dataset.eventsBound) {
         targetEl.addEventListener("targetFound", () => {
           console.log("Target found:", targetIdx);
+          setHint("Pusaka terdeteksi.", false, 1400);
           showPanel(data, targetEl);
         });
         targetEl.addEventListener("targetLost", () => {
@@ -529,7 +595,7 @@ function pauseAR(pause) {
         clampPan();
       }
       fingerMoved = true;
-      applyTransform();
+      scheduleTransform();
     }
 
     function applyPinch(dist) {
@@ -541,7 +607,7 @@ function pauseAR(pause) {
       lastPinchDist = dist;
       fingerMoved = true;
       clampPan();
-      applyTransform();
+      scheduleTransform();
     }
 
     function maybeDoubleTap(x, y) {
@@ -679,16 +745,18 @@ function pauseAR(pause) {
   }
 
   function onArReady() {
-    if (isArReady) return;
+    if (isArReady || isArFailed) return;
     isArReady = true;
     bindTargetEvents();
     setupGestures();
+    setHint("Arahkan kamera ke marker koleksi.", false, 3200);
   }
 
   function onArError(msg) {
     isArReady = false;
-    const extra = msg ? `\n\nDetail: ${msg}` : "";
-    alert(`Gagal memulai AR. Pastikan browser mendukung WebRTC, izinkan akses kamera, dan gunakan koneksi HTTPS / localhost.${extra}`);
+    isArFailed = true;
+    console.error("Gagal memulai AR:", msg || "Tidak ada detail error.");
+    setHint("AR tidak dapat dimulai. Izinkan akses kamera dan gunakan HTTPS, lalu muat ulang halaman.", true);
   }
 
   function isSecureOrLocal() {
@@ -727,20 +795,17 @@ function pauseAR(pause) {
     if (isArReady) return;
 
     if (!isSecureOrLocal()) {
-      setHint(
-        "AR memerlukan HTTPS atau localhost. Akses via https:// atau http://localhost",
-        true
-      );
+      onArError("AR memerlukan HTTPS atau localhost.");
       return;
     }
 
-    setHint("Memuat model dan inisialisasi AR...");
+    setHint("Menghubungkan kamera dan menyiapkan AR...");
 
     sceneEl.addEventListener("arReady", onArReady, { once: true });
     sceneEl.addEventListener("arError", (e) => {
       const detail = e && e.detail ? (typeof e.detail === "object" ? e.detail.message || JSON.stringify(e.detail) : String(e.detail)) : "";
       console.warn("arError event:", detail);
-      onArReady();
+      onArError(detail);
     }, { once: true });
 
     sceneEl.addEventListener("renderstart", () => setTimeout(onArReady, 600), { once: true });
@@ -757,11 +822,11 @@ function pauseAR(pause) {
 
   function init() {
     if (typeof window.AFRAME === "undefined") {
-      alert("Gagal memuat A-Frame. Periksa koneksi internet.");
+      onArError("A-Frame tidak tersedia. Periksa koneksi internet.");
       return;
     }
     if (typeof window.MINDAR === "undefined" && !document.querySelector('script[src*="mind-ar"]')) {
-      alert("Gagal memuat MindAR. Periksa koneksi internet.");
+      onArError("MindAR tidak tersedia. Periksa koneksi internet.");
       return;
     }
 

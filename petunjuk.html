@@ -12,10 +12,22 @@
 
   <main class="page page-petunjuk">
     <div class="page-header">
-      <a href="index.html" class="back-arrow" aria-label="Kembali">&#8592;</a>
+      <a href="index.html" class="back-arrow" aria-label="Kembali"><span class="ui-icon ui-icon-back" aria-hidden="true"></span></a>
       <h1 class="page-title">Petunjuk Penggunaan</h1>
     </div>
     <div class="header-line"></div>
+
+    <section class="ar-supported" aria-labelledby="ar-supported-title">
+      <p class="eyebrow">SEBELUM MULAI SCAN</p>
+      <h2 id="ar-supported-title">Hanya 5 pusaka yang bisa dipindai</h2>
+      <p class="ar-supported-note">
+        Pemindai AR saat ini hanya mengenali marker untuk pusaka-pusaka ini.
+        Koleksi lain belum tersedia untuk dipindai.
+      </p>
+      <ul class="ar-supported-list" data-ar-supported-list>
+        <li>Memuat daftar pusaka...</li>
+      </ul>
+    </section>
 
     <div class="steps">
       <div class="step">
@@ -24,7 +36,7 @@
         </div>
         <div class="step-body">
           <h3>Izinkan akses kamera smartphone</h3>
-          <p>Browser akan meminta izin kamera. Pilih "Izinkan" agar AR dapat mendeteksi koleksi.</p>
+          <p>Browser akan meminta izin kamera. Pilih "Izinkan", lalu pindai marker milik salah satu dari lima pusaka di atas.</p>
         </div>
       </div>
 
@@ -44,7 +56,7 @@
         </div>
         <div class="step-body">
           <h3>Objek 3D pusaka akan muncul</h3>
-          <p>Model, nama, dan penjelasan pusaka akan tampil otomatis di atas marker.</p>
+          <p>Model dan info pusaka tampil otomatis. Geser model untuk memutar atau memindahkannya, cubit untuk zoom, lalu tekan Reset untuk mengembalikan tampilan.</p>
         </div>
       </div>
 
@@ -76,5 +88,7 @@
       <p class="pcredit-meta">&copy; 2026 &middot; Sariwangi, Kabupaten Tasikmalaya</p>
     </div>
   </main>
+  <script src="js/pusaka-data.js"></script>
+  <script src="js/ar-supported-list.js"></script>
 </body>
 </html>

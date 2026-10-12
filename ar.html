@@ -16,16 +16,24 @@
     <!-- Topbar -->
     <div class="ar-topbar">
       <a href="index.html" class="ar-icon-btn" aria-label="Kembali">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6M9 12h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span class="ui-icon ui-icon-back" aria-hidden="true"></span>
         <span>Kembali</span>
       </a>
-      <button class="ar-icon-btn" id="topbar-audio-btn" aria-label="Audio" disabled>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path id="audio-wave" d="M16 9a5 5 0 0 1 0 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <span>Audio</span>
-      </button>
+      <div class="ar-topbar-actions">
+        <button class="ar-icon-btn" id="reset-model-btn" aria-label="Reset tampilan model" title="Reset tampilan model" disabled>
+          <span class="ui-icon ui-icon-reset" aria-hidden="true"></span>
+          <span>Reset</span>
+        </button>
+        <button class="ar-icon-btn" id="topbar-audio-btn" aria-label="Audio" disabled>
+          <span class="ui-icon ui-icon-audio" aria-hidden="true"></span>
+          <span>Audio</span>
+        </button>
+      </div>
     </div>
 
-
+    <p class="ar-scan-status loading" id="ar-scan-status" role="status" aria-live="polite">
+      Menyiapkan kamera dan AR...
+    </p>
 
     <!-- Scan frame guide -->
     <div class="ar-frame-guide" id="ar-frame-guide">
@@ -39,7 +47,7 @@
     <div class="ar-gesture-layer" id="ar-gesture-layer" aria-hidden="true"></div>
 
     <p class="ar-gesture-hint" id="ar-gesture-hint">
-      Geser kiri/kanan: putar · Atas/bawah: geser · Cubit: zoom · Ketuk 2x: reset
+      Geser: putar atau pindahkan · Cubit: zoom · Reset: kembalikan tampilan
     </p>
 
     <a-scene
@@ -120,7 +128,7 @@
       <p class="desc-short" id="desc-short">Deskripsi singkat.</p>
       <button class="detail-btn" id="detail-btn">
         <span>Info Selengkapnya</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ui-icon ui-icon-chevron-right" aria-hidden="true"></span>
       </button>
     </div>
 
@@ -128,7 +136,7 @@
       <div class="detail-card" id="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-nama">
         <div class="detail-drag-handle" aria-hidden="true"></div>
         <button class="detail-close" id="detail-close-btn" aria-label="Tutup detail">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          <span class="ui-icon ui-icon-close" aria-hidden="true"></span>
         </button>
         <div class="detail-content">
           <p class="cat" id="detail-cat">Kategori</p>
@@ -145,11 +153,12 @@
           </div>
 
           <div class="detail-section">
-            <h3>Informasi Pusaka</h3>
-            <p id="detail-desc">Deskripsi lengkap.</p>
+            <h3 id="detail-section-heading">Informasi Pusaka</h3>
+            <div id="detail-desc" class="detail-description">Deskripsi lengkap.</div>
           </div>
 
           <button class="audio-btn" id="audio-btn">
+            <span class="ui-icon ui-icon-play" id="audio-btn-icon" aria-hidden="true"></span>
             <span id="audio-btn-label">Putar Narasi</span>
           </button>
 
