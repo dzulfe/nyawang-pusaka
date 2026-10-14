@@ -165,31 +165,30 @@ const PUSAKA_DATA = [
     thumb: "assets/images/tombak-2.jpg",
   },
   {
-    id: "congklak-1",
-    targetIndex: null,
-    kategori: "Permainan Tradisional",
-    koleksiGroup: "Budaya",
-    nama: "Permainan Tradisional",
-    era: "Sukakerta",
-    deskripsi:
-      "Papan congklak dari kayu pilihan dengan lubang-lubang permainan dan sisa biji uang kauri (siput monyet) di atasnya. Alat permainan strategi tradisional khas Sunda ini biasa dimainkan oleh kalangan keraton dan keluarga bangsawan, serta digunakan sebagai media latih hitung dan diplomasi damai. Koleksi ini merupakan peninggalan dari lingkungan Kerajaan Galunggung.",
-    deskripsiLengkap:
-      "Congklak (sering disebut juga dhakon atau congkak) adalah permainan tradisional yang sudah dikenal di Tatar Sunda sejak abad ke-14. Papan congklak koleksi Museum Galunggung ini terbuat dari kayu jati tua yang masih utuh, dengan 14 lubang kecil dan 2 lubang besar di kedua ujungnya. Di atas papan masih tersimpan sisa biji kauri (keong mas) yang pada zamannya berfungsi sebagai mata uang dalam upacara adat sebelum koin dicetak. Di lingkungan Kerajaan Galunggung, congklak bukan sekadar hiburan — para pejabat kerajaan sering menggunakannya sebagai alat latih perhitungan pajak, logika, dan bahkan simulasi strategi perang ringan sebelum rapat kerajaan dimulai.",
-    audioSrc: "assets/audio/placeholder.mp3",
-    modelSrc: null,
-    thumb: "assets/images/congklak.png",
-  },
-  {
     id: "kujang-1",
     targetIndex: null,
     kategori: "Kujang",
     koleksiGroup: "Budaya",
-    nama: "Koleksi Kujang",
-    era: "Pemerintahan Sukakerta",
+    nama: "Kujang dan Variannya",
+    era: "Tradisi Sunda",
     deskripsi:
-      "Sandal jepit tradisional Sunda wanita (kelo geulis) berbagai corak: ada model kayu polos dengan tali sepatu modern, dan model bordir bunga merah putih khas pengantin. Koleksi ini berasal dari periode Pemerintahan Sukakerta (masa transisi menuju Kabupaten Tasikmalaya), menunjukkan pengaruh budaya Eropa yang mulai masuk ke pedalaman Priangan.",
+      "Koleksi ini memperlihatkan keragaman bentuk kujang Sunda, dari Kudi hingga Kujang Ciung, Kujang Naga, dan Kujang Badak.",
     deskripsiLengkap:
-      "Kata 'kelo' dalam bahasa Sunda berarti sandal, sementara 'geulis' berarti cantik — sebuah nama yang tepat untuk koleksi sandal pengantin dan harian wanita dari masa Sukakerta. Beberapa pasang di bagian depan terbuat dari kayu jati yang dibentuk melengkung sesuai tapak kaki, dengan tali kulit halus sebagai pengikatnya. Di sebelah kanan tampak model bordir merah putih khas pengantin abad ke-18 yang menggunakan teknik sulam benang sutra impor. Menurut catatan para sesepuh Sariwangi, kelo geulis model bordir ini hanya boleh dipakai oleh kalangan istri bupati atau anggota keluarga Sukakerta pada upacara pernikahan adat atau hari besar keagamaan.",
+      "Tidak semua senjata tradisional Sunda memiliki bentuk yang sama. Koleksi Museum Galunggung ini menghadirkan beberapa ragam yang dapat dibandingkan langsung, termasuk Kudi serta Kujang Ciung, Kujang Naga, dan Kujang Badak. Perbedaan bentuk tersebut menjadikan koleksi ini menarik untuk diamati dengan saksama.",
+    bagianInformasi: [
+      {
+        judul: "Ragam bentuk",
+        isi: "Kujang Ciung, Kujang Naga, dan Kujang Badak merupakan nama beberapa varian yang tersimpan di museum. Siluet dan detail tiap bilah memberi pengunjung kesempatan untuk membandingkan bentuk-bentuk kujang dalam satu koleksi.",
+      },
+      {
+        judul: "Kudi dan kujang",
+        isi: "Menurut keterangan koleksi, Kudi diperkirakan lebih tua daripada kujang. Kehadirannya memperlihatkan bahwa tradisi perkakas dan senjata di wilayah Sunda memiliki ragam bentuk serta perjalanan yang panjang.",
+      },
+      {
+        judul: "Makna dalam tradisi",
+        isi: "Dalam tradisi yang dicatat museum, kujang juga dikenal sebagai senjata para dewa. Kisah tersebut menambah lapisan makna budaya pada benda yang dapat diamati bentuk dan pengerjaannya.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
     thumb: "assets/images/kujang.png",
@@ -197,29 +196,57 @@ const PUSAKA_DATA = [
   {
     id: "keris-singasari-1",
     targetIndex: null,
-    kategori: "Keris",
+    kategori: "Kujang",
     koleksiGroup: "Senjata",
     nama: "Kujang Pajajaran",
-    era: "Kerajaan Pajajaran",
+    era: "Diperkirakan abad ke-12",
     deskripsi:
-      "Keris bergaya Singasari dengan bilah berlekuk khas Jawa Timur, namun ditempa oleh pandai besi lokal Galunggung. Koleksi ini menunjukkan hubungan persahabatan antara Kerajaan Galunggung dengan dinasti Singasari, di mana keris sering dipertukarkan sebagai tanda perjanjian atau upeti.",
+      "Kujang Pajajaran ini ditemukan di Gunung Salak, Bogor, dan diperkirakan berasal dari abad ke-12. Keterangan museum menyebut bahannya berupa batu meteorit murni tanpa campuran.",
     deskripsiLengkap:
-      "Meskipun berjiplak gaya Singasari (terlihat dari lekukan bilah dan bentuk gagangnya), keris ini dibuat di bengkel pandai besi kaki Gunung Galunggung berdasarkan pesanan khusus pada abad ke-13. Sejarahnya mencatat bahwa putra mahkota Kerajaan Singasari pernah berkunjung ke Galunggung untuk melangsungkan perjodohan, dan keris ini dihadiahkan sebagai tanda tanda persahabatan kedua keluarga kerajaan. Di sarungnya masih tersimpan anyaman rotan asli yang dibuat dengan teknik anyam tiga warna khas Sunda — putih, hitam, dan coklat tua — yang melambangkan tiga alam dalam kepercayaan Sunda kuno: buana nyungcung, buana madya, dan buana larangan.",
+      "Sebuah kujang yang dikaitkan dengan era Pajajaran ini ditemukan di Gunung Salak, Bogor. Koleksi tersebut diperkirakan berasal dari abad ke-12. Selain bentuknya yang khas, keterangan mengenai bahan pembuatannya menjadikannya salah satu benda yang menarik untuk dikenali lebih dekat.",
+    bagianInformasi: [
+      {
+        judul: "Asal penemuan",
+        isi: "Kujang ini ditemukan di kawasan Gunung Salak, Bogor. Lokasi penemuan menjadi bagian penting dari cerita yang menyertai benda dan membantu pengunjung mengenal riwayat koleksi.",
+      },
+      {
+        judul: "Perkiraan masa",
+        isi: "Kujang Pajajaran ini diperkirakan berasal dari abad ke-12. Penanggalan tersebut merupakan perkiraan yang dicantumkan dalam informasi koleksi museum.",
+      },
+      {
+        judul: "Bahan yang disebutkan",
+        isi: "Keterangan koleksi menyebut kujang ini terbuat dari batu meteorit murni tanpa campuran. Informasi bahan ini memberi sudut pandang berbeda saat mengamati sebuah senjata tradisional.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/keris-singasari.png",
+    thumb: "assets/images/kujang-pajajaran.png",
   },
   {
     id: "kitab-kuno-1",
     targetIndex: null,
-    kategori: "Naskah Kuno",
+    kategori: "Kitab dan Naskah Kuno",
     koleksiGroup: "Dokumen",
-    nama: "Kitab & Al-Quran kuno",
+    nama: "Kitab dan Al-Quran Kuno",
     era: "Masa Transisi Galunggung ke Sukakerta",
     deskripsi:
-      "Naskah kuno bertulis aksara Sunda kuno di atas kertas Eropa buatan tangan, berisi catatan silsilah raja, ramalan musim tanam, dan doa keselamatan kerajaan. Beberapa halaman masih menyimpan ilustrasi hewan (zirah berleher panjang, rusa, kera) dan gambar tanaman obat sebagai panduan.",
+      "Lebih dari 170 kitab kuno tersimpan di museum. Di antaranya Al-Quran berusia sekitar 300 tahun yang ditulis Syekh Quro dan Kitab Al-Hikmah dari era Sunan Gunung Jati.",
     deskripsiLengkap:
-      "Kitab koleksi Museum Galunggung ini ditulis dalam aksara Sunda kuno (bukan aksara Latin) dan disusun bertahap oleh empat orang juru tulis kerajaan selama kurun waktu abad ke-16 hingga ke-17. Kertasnya dibuat dengan serat kapas pilihan yang diimpor melalui pelabuhan Cirebon, menjelaskan mengapa warnanya masih terjaga kekuningan alami setelah ratusan tahun. Di halaman pertama terdapat lukisan zirah berleher panjang yang diyakini merupakan simbol keabadian, sedangkan tulisan di sekitarnya membacakan silsilah Kerajaan Galunggung dari Batari Hyang hingga keturunan Sukakerta. Beberapa bagian naskah ditulis menggunakan tinta merah dari getah akar pacar dan tinta hitam dari jelaga minyak kelapa, sebuah teknik tulis tradisional yang sudah punah.",
+      "Kumpulan naskah dan kitab kuno menjadi salah satu bagian penting dari koleksi museum. Jumlahnya lebih dari 170 kitab, dengan kisah yang menghubungkan penulisan, bahan, bahasa, dan perjalanan penyebaran agama di wilayah Pasundan.",
+    bagianInformasi: [
+      {
+        judul: "Al-Quran tulisan Syekh Quro",
+        isi: "Salah satu koleksi yang dikenal adalah Al-Quran berusia sekitar 300 tahun, yang menurut keterangan museum ditulis langsung oleh Syekh Quro dari Pesantren Quro, Karawang. Sampulnya menggunakan kulit, daluang, dan kayu—bahan yang memberi gambaran tentang bentuk perawatan dan penjilidan kitab pada masa lalu.",
+      },
+      {
+        judul: "Kitab Al-Hikmah",
+        isi: "Museum juga menyimpan Kitab Al-Hikmah yang dikaitkan dengan era Sunan Gunung Jati dan penyebaran agama Islam di Pasundan. Kitab ini ditulis menggunakan logat bahasa Cirebon atau Caruban, memperlihatkan kekayaan bahasa dalam tradisi tulis.",
+      },
+      {
+        judul: "Merawat warisan tertulis",
+        isi: "Lebih dari 170 kitab kuno tersimpan di museum. Setiap naskah menjadi jejak pengetahuan dan tradisi yang diwariskan melalui tulisan, sekaligus mengingatkan pentingnya menjaga bahan-bahan lama agar dapat dipelajari generasi berikutnya.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
     thumb: "assets/images/kitab-kuno.png",
@@ -230,11 +257,25 @@ const PUSAKA_DATA = [
     kategori: "Kursi",
     koleksiGroup: "Seni Rupa",
     nama: "Kursi Sukapura",
-    era: "Zaman Kehancuran Majapahit",
+    era: "Pemerintahan Sukapura periode Manonjaya",
     deskripsi:
-      "Arca patung naga perunggu (campuran perak, tembaga, dan timah) bergaya Mataram Hindu-Budha. Dipercaya sebagai hadiah dari utusan Mataram ke Galunggung ketika keduanya bersekutu menahan serangan kerajaan lain dari arah timur Pulau Jawa.",
+      "Peninggalan pemerintahan Sukapura periode Manonjaya ini digunakan oleh Bupati Wira Dadaha II, yang juga dikenal sebagai Raden Jaya Manggala.",
     deskripsiLengkap:
-      "Patung Naga Mataram ini merupakan satu-satunya koleksi logam cor di Museum Galunggung yang usianya dapat ditelusuri sampai zaman kejayaan Mataram sebelum kebangkitan Pajajaran. Unsur Hindu masih kelihatan dari mahkota naga yang berbentuk padma teratai, sementara badan ular yang melilit kendi kecil di bagian bawah melambangkan penguasa air sungai dan kesuburan lahan pertanian. Berdasarkan uji arkeometri tahun 2021, campuran logamnya mengandung 70% tembaga, 18% timah, 8% perak, dan 4% lainnya — sebuah teknik cor kompleks yang mengindikasikan pematangan seni perunggu di Nusantara jauh sebelum kedatangan Eropa. Sebelum disimpan di museum, patung ini konon diletakkan di sebelah utara sumber mata air Cikunten untuk doa kesuburan tanam padi.",
+      "Kursi Bupati Sukapura bukan hanya perabot lama, tetapi juga benda yang membawa cerita tentang pemerintahan di wilayah Sukapura. Koleksi ini dikaitkan dengan periode Manonjaya dan digunakan oleh Bupati Wira Dadaha II, yang dikenal pula sebagai Raden Jaya Manggala.",
+    bagianInformasi: [
+      {
+        judul: "Latar pemerintahan",
+        isi: "Kursi ini berasal dari masa pemerintahan Sukapura pada periode Manonjaya. Periode tersebut menjadi bagian dari perjalanan sejarah pemerintahan daerah yang kini dapat dikenali melalui peninggalan bendawi.",
+      },
+      {
+        judul: "Tokoh yang menggunakan",
+        isi: "Menurut keterangan koleksi, kursi ini digunakan oleh Bupati Wira Dadaha II, atau Raden Jaya Manggala. Nama tokoh tersebut menghubungkan benda ini dengan sosok yang pernah memimpin Sukapura.",
+      },
+      {
+        judul: "Membaca benda sejarah",
+        isi: "Sebagai benda yang digunakan dalam lingkungan pemerintahan, kursi ini membantu pengunjung membayangkan kehidupan dan tata pemerintahan pada masanya. Nilainya tidak hanya terletak pada bentuk, tetapi juga pada kisah penggunaan dan tokoh yang menyertainya.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
     thumb: "assets/images/kursi-sukapura.png",
@@ -244,12 +285,26 @@ const PUSAKA_DATA = [
     targetIndex: null,
     kategori: "Koleksi Senjata",
     koleksiGroup: "Senjata",
-    nama: "Gugusan Senjata Perang Sukakerta",
+    nama: "Koleksi Senjata Pusaka",
     era: "Pemerintahan Sukakerta",
     deskripsi:
-      "Koleksi lebih dari 20 bilah senjata tradisional yang digantung rapi: pedang panjang, klewang, keris pendek, tombak, dan belati. Sebagian besar merupakan barang rampasan perang yang dipersembahkan kepada Bupati Sukakerta pada masa penyerangan Cicalengka, sementara sebagian lain adalah buatan pandai besi lokal.",
+      "Beragam senjata dari daerah dan masa berbeda tersimpan di museum, antara lain Kelewang Sasak, golok Si Pitung, golok Pattimura, mandau, gobang Tasikmalaya, dan golok Banten.",
     deskripsiLengkap:
-      "Rak dinding merah ini menampung koleksi senjata terbesar yang dimiliki Museum Galunggung, total sebanyak 27 bilah dari berbagai asal usul. Dari atas ke bawah dapat dilihat beberapa bilah clewang panjang khas Pasundan, 3 bilah pedang gaya Campa (campuran Persia dan Jawa), dan belati-belati pendek yang biasa dibawa oleh pasukan pengawal bupati. Dua bilah keris di baris tengah masih menyimpan pamor yang jelas dan dinyatakan lolos uji besi tua oleh pakar keris Bandung pada tahun 2019. Menurut buku inventaris kerajaan, sebagian besar senjata ini didapat sebagai barang taklukan ketika Sukakerta membantu Sultan Banten menumpas pemberontakan di wilayah timur Priangan tahun 1706.",
+      "Koleksi senjata ini mempertemukan benda-benda pusaka dari beragam daerah dan periode. Nama-nama yang tersimpan menunjukkan luasnya ragam tradisi persenjataan di Nusantara, dari senjata yang dikaitkan dengan tokoh hingga senjata khas suatu wilayah.",
+    bagianInformasi: [
+      {
+        judul: "Dari berbagai daerah",
+        isi: "Koleksi mencakup Kelewang Sasak dari zaman Belanda, Mandau dari Kalimantan, Gobang Tasikmalaya, serta golok dari Banten. Perbedaan nama dan asal tersebut memperlihatkan kekayaan tradisi senjata antardaerah.",
+      },
+      {
+        judul: "Senjata dan tokoh",
+        isi: "Di antara koleksi terdapat Golok Si Pitung dan Golok Pattimura. Nama-nama ini mengajak pengunjung mengingat kembali kisah tokoh yang lekat dalam sejarah dan ingatan masyarakat.",
+      },
+      {
+        judul: "Mengamati dengan cermat",
+        isi: "Saat melihat koleksi, perhatikan perbedaan bentuk bilah dan gagang serta nama asal yang menyertainya. Benda-benda ini dipamerkan sebagai pusaka sejarah dan budaya; pengunjung dapat mempelajari keterangannya tanpa menyentuh koleksi.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
     thumb: "assets/images/senjata-perang.png",
@@ -262,9 +317,23 @@ const PUSAKA_DATA = [
     nama: "Wayang Golek",
     era: "Pemerintahan Sukakerta",
     deskripsi:
-      "Satu set wayang golek kayu khas Sunda (warang golek) bertokoh Punakawan — Bagong, Cepot, dan Dawala — beserta tokoh Pandawa di antaranya. Koleksi dalang ternama Sukakerta, K.H. Udin Samsudin, yang sempat menjadi hiburan utama masyarakat hingga tahun 1960-an.",
+      "Koleksi wayang golek, termasuk yang disebut sebagai karya pertama Asep Sunandar, digunakan untuk mengenalkan seni pedalangan dan perbedaan wayang golek dengan wayang kulit.",
     deskripsiLengkap:
-      "Wayang golek adalah seni pertunjukan wayang khas Tatar Sunda yang memakai boneka kayu tiga dimensi, di mana dalang memainkannya dari balik layar kain blacu. Di antara tokoh-tokoh koleksi museum ini, yang paling ikonik adalah set Punakawan di baris depan: Cepot dengan topeng merah senyum khasnya, Dawala di kanan dengan baju motif lurik, dan Bagong di pojok kiri. Dalang pemilik aslinya ialah K.H. Udin Samsudin yang terkenal dari Sukakerta, yang pada 1965 diperkenankan oleh Bupati Tasikmalaya untuk mementaskan lakon 'Limbukan Galunggung' di hadapan Presiden Soekarno di Istana Merdeka. Hiasan bunga di mahkota wayang menggunakan kertas Jepang tipe krep tahan lama dan benang sutra perak yang masih mengkilap hingga hari ini.",
+      "Wayang golek menghadirkan cerita melalui boneka kayu tiga dimensi yang digerakkan dan dimainkan oleh seorang dalang. Museum menyimpan koleksi wayang golek, termasuk yang disebut sebagai karya pertama Asep Sunandar. Koleksi ini juga dimanfaatkan sebagai sarana belajar bagi anak-anak.",
+    bagianInformasi: [
+      {
+        judul: "Mengenal wayang golek",
+        isi: "Tokoh wayang golek dibuat dalam bentuk tiga dimensi dan dimainkan oleh dalang. Gerak, suara, serta cerita berpadu dalam pertunjukan untuk menghidupkan karakter di hadapan penonton.",
+      },
+      {
+        judul: "Karya Asep Sunandar",
+        isi: "Di antara koleksi museum terdapat wayang golek yang disebut sebagai karya pertama Asep Sunandar. Kehadirannya menambah cerita tentang para perajin dan seniman yang ikut menjaga tradisi pedalangan.",
+      },
+      {
+        judul: "Golek dan kulit",
+        isi: "Wayang golek berbentuk boneka kayu tiga dimensi, sedangkan wayang kulit berupa tokoh pipih. Perbedaan bentuk dan cara memainkannya menjadi pengenalan yang menarik bagi anak-anak saat mengunjungi museum.",
+      },
+    ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
     thumb: "assets/images/warang-golek.png",

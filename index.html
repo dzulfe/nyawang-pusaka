@@ -140,7 +140,7 @@
         <h2 class="section-title">Koleksi Lainnya</h2>
         
       </div>
-      <p class="section-desc">Jelajahi koleksi museum lainnya dari berbagai periode sejarah.</p>
+      <p class="section-desc">Jumlah koleksi Museum Galunggung mencapai hampir 1.080 benda. Pilih koleksi untuk membaca deskripsi dan kisahnya.</p>
     </div>
 
     <div class="carousel-wrapper">
@@ -152,6 +152,30 @@
     </div>
     <div class="carousel-dots" id="carousel-dots"></div>
   </section>
+  <div class="collection-detail-backdrop" id="collection-detail-backdrop" aria-hidden="true">
+    <section class="collection-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="collection-detail-title" aria-describedby="collection-detail-description" tabindex="-1">
+      <button class="collection-detail-close" id="collection-detail-close" type="button" aria-label="Tutup deskripsi koleksi">&times;</button>
+      <div class="collection-detail-heading">
+        <p class="collection-detail-category" id="collection-detail-category"></p>
+        <h2 id="collection-detail-title"></h2>
+        <p class="collection-detail-era" id="collection-detail-era"></p>
+      </div>
+      <div class="collection-detail-image-wrap">
+        <img class="collection-detail-image" id="collection-detail-image" alt="" loading="lazy" decoding="async">
+        <p class="collection-detail-image-caption" id="collection-detail-image-caption" hidden></p>
+      </div>
+      <div class="collection-detail-body">
+        <section class="collection-detail-intro" aria-labelledby="collection-detail-intro-title">
+          <h3 id="collection-detail-intro-title">Sekilas koleksi</h3>
+          <p class="collection-detail-description" id="collection-detail-description"></p>
+        </section>
+        <section class="collection-detail-story" id="collection-detail-story" aria-labelledby="collection-detail-story-title">
+          <h3 id="collection-detail-story-title">Cerita di balik koleksi</h3>
+          <div class="collection-detail-sections" id="collection-detail-sections"></div>
+        </section>
+      </div>
+    </section>
+  </div>
 
   <!-- 4. LINIMASA SEJARAH (Vertical Timeline - Accordion) -->
   <section class="section-container" id="timeline">
@@ -329,7 +353,7 @@
     </div>
     
     <p class="section-desc">
-      Museum Galunggung adalah pusat pelestarian benda bersejarah dari Kerajaan Galunggung, Pemerintahan Sukakerta, hingga periode awal Kabupaten Tasikmalaya. Berdiri di kaki Gunung Galunggung, museum ini bertujuan untuk menjaga warisan budaya leluhur, serta menjadi sarana edukasi dan riset bagi generasi mendatang.
+      Museum Galunggung adalah pusat pelestarian hampir 1.080 benda bersejarah dari Kerajaan Galunggung, Pemerintahan Sukakerta, hingga periode awal Kabupaten Tasikmalaya. Berdiri di kaki Gunung Galunggung, museum ini bertujuan untuk menjaga warisan budaya leluhur, serta menjadi sarana edukasi dan riset bagi generasi mendatang.
     </p>
 
     <div class="stats-grid">
@@ -337,7 +361,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="1.5"><path d="M4 19V5a2 2 0 0 1 2-2h13.4a.5.5 0 0 1 .49.79l-2.5 3.51a.5.5 0 0 0 0 .58l2.5 3.5a.5.5 0 0 1-.49.79H6"></path></svg>
         <div>
           <p class="stat-label">Koleksi</p>
-          <p class="stat-value">500+</p>
+          <p class="stat-value">1.080</p>
         </div>
       </div>
       <div class="stat-item">
@@ -369,19 +393,11 @@
           </div>
           <ul class="schedule-list">
             <li>
-              <span class="schedule-day">Senin — Jumat</span>
-              <span class="schedule-time">08.00 — 12.00 WIB <span class="tag">(Sampai Dzuhur)</span></span>
-            </li>
-            <li>
-              <span class="schedule-day">Sabtu — Minggu</span>
-              <span class="schedule-time">08.00 — 16.00 WIB <span class="tag weekend">Libur tetap buka</span></span>
-            </li>
-            <li class="closed">
-              <span class="schedule-day">Hari Besar Nasional</span>
-              <span class="schedule-time">Tutup</span>
+              <span class="schedule-day">Setiap hari</span>
+              <span class="schedule-time">09.00 — 15.00 WIB</span>
             </li>
           </ul>
-          <p class="schedule-note">*Waktu kunjungan dapat berubah sewaktu-waktu. Disarankan datang 30 menit sebelum jam tutup.</p>
+          <p class="schedule-note">Museum tutup pada hari libur nasional dan saat waktu salat.</p>
         </div>
 
         <!-- Lokasi -->
@@ -521,7 +537,18 @@
       // --- Render Koleksi Lainnya Carousel ---
       const carouselWrap = document.getElementById("koleksi-carousel");
       const carouselDots = document.getElementById("carousel-dots");
-      
+      const detailBackdrop = document.getElementById("collection-detail-backdrop");
+      const detailClose = document.getElementById("collection-detail-close");
+      const detailCategory = document.getElementById("collection-detail-category");
+      const detailTitle = document.getElementById("collection-detail-title");
+      const detailEra = document.getElementById("collection-detail-era");
+      const detailImage = document.getElementById("collection-detail-image");
+      const detailImageCaption = document.getElementById("collection-detail-image-caption");
+      const detailDescription = document.getElementById("collection-detail-description");
+      const detailStory = document.getElementById("collection-detail-story");
+      const detailSections = document.getElementById("collection-detail-sections");
+      let lastFocusedCard = null;
+
       if (carouselWrap && typeof PUSAKA_DATA !== "undefined") {
         const highlights = PUSAKA_DATA.filter(x => !x.flag || x.flag !== "ar");
         const AUTOPLAY_MS = 4000;
@@ -573,6 +600,69 @@
           }
         }
 
+        function closeCollectionDetail() {
+          if (!detailBackdrop || !detailBackdrop.classList.contains("visible")) return;
+          detailBackdrop.classList.remove("visible");
+          detailBackdrop.setAttribute("aria-hidden", "true");
+          if (lastFocusedCard) lastFocusedCard.focus({ preventScroll: true });
+          lastFocusedCard = null;
+          isUserInteracting = false;
+          scheduleResumeAutoplay();
+        }
+
+        function openCollectionDetail(item, card) {
+          if (!detailBackdrop) return;
+          lastFocusedCard = card;
+          detailCategory.textContent = item.kategori || "Koleksi Museum";
+          detailTitle.textContent = item.nama || "Koleksi Museum";
+          detailEra.textContent = item.era || "";
+          detailDescription.textContent = item.deskripsi || item.deskripsiLengkap || "Deskripsi koleksi ini belum tersedia.";
+          detailSections.replaceChildren();
+          const sections = Array.isArray(item.bagianInformasi) ? item.bagianInformasi : [];
+          sections.forEach((sectionData) => {
+            const section = document.createElement("section");
+            section.className = "collection-detail-section";
+            const heading = document.createElement("h4");
+            heading.textContent = sectionData.judul;
+            const paragraph = document.createElement("p");
+            paragraph.textContent = sectionData.isi;
+            section.append(heading, paragraph);
+            detailSections.appendChild(section);
+          });
+          detailStory.hidden = sections.length === 0;
+          detailImage.src = item.thumb || "assets/icons/photo-placeholder.svg";
+          detailImage.alt = item.nama || "Koleksi Museum";
+          detailImageCaption.hidden = true;
+          detailImageCaption.textContent = "";
+          detailImage.onerror = () => {
+            detailImage.onerror = null;
+            detailImage.src = "assets/icons/photo-placeholder.svg";
+            detailImage.classList.add("is-placeholder");
+          };
+          detailImage.classList.remove("is-placeholder");
+          detailBackdrop.classList.add("visible");
+          detailBackdrop.setAttribute("aria-hidden", "false");
+          isUserInteracting = true;
+          stopAutoplay();
+          detailClose.focus({ preventScroll: true });
+        }
+
+        if (detailClose) detailClose.addEventListener("click", closeCollectionDetail);
+        if (detailBackdrop) {
+          detailBackdrop.addEventListener("click", (event) => {
+            if (event.target === detailBackdrop) closeCollectionDetail();
+          });
+        }
+        document.addEventListener("keydown", (event) => {
+          if (!detailBackdrop || !detailBackdrop.classList.contains("visible")) return;
+          if (event.key === "Escape") {
+            closeCollectionDetail();
+          } else if (event.key === "Tab") {
+            event.preventDefault();
+            detailClose.focus({ preventScroll: true });
+          }
+        });
+
         const imgWithFallback = (src, alt, cls) => {
           const placeholder = "assets/icons/photo-placeholder.svg";
           return `
@@ -585,12 +675,25 @@
         highlights.forEach((item, idx) => {
           const card = document.createElement("div");
           card.className = "unggulan-card";
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("aria-haspopup", "dialog");
+          card.setAttribute("aria-label", `Lihat deskripsi ${item.nama}`);
+          card.addEventListener("click", () => openCollectionDetail(item, card));
+          card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openCollectionDetail(item, card);
+            }
+          });
           card.innerHTML = `
             <div class="img-simple-wrap">
               ${imgWithFallback(item.thumb, item.nama, "unggulan-img")}
             </div>
             <div class="unggulan-info">
+              <p class="unggulan-category">${item.kategori || "Koleksi Museum"}</p>
               <h3>${item.nama}</h3>
+              <p class="unggulan-summary">${item.deskripsi || ""}</p>
             </div>
           `;
           carouselWrap.appendChild(card);
@@ -663,6 +766,7 @@
 
         const resumeEvents = ["touchend", "touchcancel", "mouseup", "pointerup", "mouseleave"];
         resumeEvents.forEach(evt => carouselWrap.addEventListener(evt, () => {
+          if (detailBackdrop && detailBackdrop.classList.contains("visible")) return;
           isUserInteracting = false;
           scheduleResumeAutoplay(AUTOPLAY_MS);
         }, { passive: true }));
@@ -670,7 +774,7 @@
         document.addEventListener("visibilitychange", () => {
           if (document.hidden) {
             stopAutoplay();
-          } else if (!isUserInteracting) {
+          } else if (!isUserInteracting && !(detailBackdrop && detailBackdrop.classList.contains("visible"))) {
             startAutoplay();
           }
         });
