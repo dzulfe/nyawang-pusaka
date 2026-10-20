@@ -30,7 +30,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/keris-1.mp3",
     modelSrc: "assets/models/keris-1.glb",
-    thumb: "assets/images/keris-1.jpg",
+    thumb: "assets/images/keris-1.webp",
   },
   {
     id: "keris-2",
@@ -63,7 +63,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/keris-2.mp3",
     modelSrc: "assets/models/keris-2.glb",
-    thumb: "assets/images/keris-2.jpg",
+    thumb: "assets/images/keris-2.webp",
   },
   {
     id: "keris-3",
@@ -96,7 +96,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/keris-3.mp3",
     modelSrc: "assets/models/keris-3.glb",
-    thumb: "assets/images/keris-3.jpg",
+    thumb: "assets/images/keris-3.webp",
   },
   {
     id: "tombak-1",
@@ -129,7 +129,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/tombak-1.mp3",
     modelSrc: "assets/models/tombak-1.glb",
-    thumb: "assets/images/tombak-1.jpg",
+    thumb: "assets/images/tombak-1.webp",
   },
   {
     id: "tombak-2",
@@ -162,7 +162,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/tombak-2.mp3",
     modelSrc: "assets/models/tombak-2.glb",
-    thumb: "assets/images/tombak-2.jpg",
+    thumb: "assets/images/tombak-2.webp",
   },
   {
     id: "kujang-1",
@@ -191,7 +191,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/kujang.png",
+    thumb: "assets/images/kujang.webp",
   },
   {
     id: "keris-singasari-1",
@@ -220,7 +220,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/kujang-pajajaran.png",
+    thumb: "assets/images/kujang-pajajaran.webp",
   },
   {
     id: "kitab-kuno-1",
@@ -249,7 +249,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/kitab-kuno.png",
+    thumb: "assets/images/kitab-kuno.webp",
   },
   {
     id: "kursi-sukapura-1",
@@ -278,7 +278,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/kursi-sukapura.png",
+    thumb: "assets/images/kursi-sukapura.webp",
   },
   {
     id: "senjata-perang-1",
@@ -307,7 +307,7 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/senjata-perang.png",
+    thumb: "assets/images/senjata-perang.webp",
   },
   {
     id: "wayang-golek-1",
@@ -336,6 +336,6 @@ const PUSAKA_DATA = [
     ],
     audioSrc: "assets/audio/placeholder.mp3",
     modelSrc: null,
-    thumb: "assets/images/warang-golek.png",
+    thumb: "assets/images/wayang-golek.webp",
   },
 ];
